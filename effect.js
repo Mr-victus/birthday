@@ -133,7 +133,7 @@ $('document').ready(function(){
 
 	$('#light_candle').click(function(){
 		$('.fuego').fadeIn('slow');
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
+		$(this).fadeOut('slow').promise().done(function(){
 			$('#wish_message').fadeIn('slow');
 		});
 	});
@@ -166,32 +166,31 @@ $('document').ready(function(){
 	
 	$('#story').click(function(){
 		$(this).fadeOut('slow');
-		$('.cake').fadeOut('fast').delay(4000).promise().done(function(){
+		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
 		});
 		
 		var i;
 
-		// function msgLoop (i) {
-		// 	$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
-		// 	i=i+1;
-		// 	$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
-		// 	if(i==50){
-		// 		$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-		// 			$('.cake').fadeIn('fast');
-		// 		});
+		function msgLoop (i) {
+			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+			i=i+1;
+			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
+			if(i==50){
+				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+					$('.cake').fadeIn('fast');
+				});
 				
-		// 	}
-		// 	else{
-		// 		msgLoop(i);
-		// 	}	
-					
+			}
+			else{
+				msgLoop(i);
+			}			
 
-		// });
-		// 	// body...
-		// }
+		});
+			// body...
+		}
 		
-		//msgLoop(0);
+		msgLoop(0);
 		
 	});
 });
